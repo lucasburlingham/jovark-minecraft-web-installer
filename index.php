@@ -10,14 +10,14 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <title>
         <?php
-        var status = shell_exec('cat status.conf | head -n 1');
+        $status = shell_exec('cat status.conf | head -n 1');
         if (status === "ready") {
-            var page_title = "Obsidian Portal Admin | Starting Installer";
+            $page_title = "Obsidian Portal Admin | Starting Installer";
         }
         elseif (status === "installing") {
-            var page_title = "Obsidian Portal Admin | Installer";
+            $page_title = "Obsidian Portal Admin | Installer";
         } else {
-            var page_title = "Obsidian Portal Admin | Admin Page";
+            $page_title = "Obsidian Portal Admin | Admin Page";
         }
         echo("$page_title");
         ?>
@@ -27,7 +27,7 @@
 <body>
 
 <?php 
-        var javaDependantCheck = shell_exec('java -version | head -n 1 | awk \'{print $2}\'');
+        $javaDependantCheck = shell_exec('java -version | head -n 1 | awk \'{print $2}\'');
         if (!empty(javaDependantCheck)) {
             echo("Something went wrong, and we cannot detect your version of Java");
         } elseif (javaDependantCheck != "version") {
