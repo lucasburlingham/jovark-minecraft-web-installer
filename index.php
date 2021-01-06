@@ -11,7 +11,10 @@
     <title>
         <?php
         var status = shell_exec('cat status.conf | head -n 1');
-        if (status === "installing") {
+        if (status === "ready") {
+            var page_title = "Obsidian Portal Admin | Starting Installer";
+        }
+        elseif (status === "installing") {
             var page_title = "Obsidian Portal Admin | Installer";
         } else {
             var page_title = "Obsidian Portal Admin | Admin Page";
@@ -26,11 +29,13 @@
 <?php 
         var javaDependantCheck = shell_exec('java -version | head -n 1 | awk \'{print $2}\'');
         if (!empty(javaDependantCheck)) {
-            echo "Something went wrong, and we cannot detect your version of Java"
+            echo("Something went wrong, and we cannot detect your version of Java");
         } elseif (javaDependantCheck != "version") {
             echo("Please install Java to run Minecraft Java Edition Server and Obsidian Portal Admin.");
+            echo("Here are the instructions to do so on various platforms. This installer can attempt to do it for you on Unix based systems: ")
         }
         if (status === "installing") {
+            mkdir('server');
             shell_exec('wget https://launcher.mojang.com/v1/objects/35139deedbd5182953cf1caa23835da59ca3d7cd/server.jar');
         }
 
