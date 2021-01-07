@@ -15,6 +15,44 @@
 
 <body>
 
+
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" id="topnav">
+        <li class="nav-item">
+            <a href="#tab1Id" class="nav-link active">Home</a>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="#tab2Id">Action</a>
+                <a class="dropdown-item" href="#tab3Id">Another action</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#tab4Id">Action</a>
+            </div>
+        </li>
+        <li class="nav-item">
+            <a href="#tab5Id" class="nav-link">Another link</a>
+        </li>
+        <li class="nav-item">
+            <a href="#" class="nav-link disabled">Disabled</a>
+        </li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div class="tab-pane fade show active" id="tab1Id" role="tabpanel"></div>
+        <div class="tab-pane fade" id="tab2Id" role="tabpanel"></div>
+        <div class="tab-pane fade" id="tab3Id" role="tabpanel"></div>
+        <div class="tab-pane fade" id="tab4Id" role="tabpanel"></div>
+        <div class="tab-pane fade" id="tab5Id" role="tabpanel"></div>
+    </div>
+
+    <script>
+        $('#topnav a').click(e => {
+            e.preventDefault();
+            $(this).tab('show');
+        });
+    </script>
     <?php
     // check to see if the server root is writable
     if (!is_writable('.')) {
@@ -33,39 +71,34 @@
 
     // Check the status of the installation from status.conf file which has 1 word in it
     $status = shell_exec('cat status.conf | head -n 1');
-    echo "Status: " . $status;
+    echo "Status: " . $status . "<br>";
     checkDependancies();
 
 
     function checkDependancies()
     {
-        echo "Checking deps";
+        $OS = PHP_OS;
+        echo "Checking Dependancies";
         // Check main java version to see if it is installed, should print out 'YES' if it is installed, and 'NO' if it is not
-        // POSIX
-        if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
+        if ($OS === 'WINNT') {
             // if we are running Windows
-            $hasJava = shell_exec('java -version > NUL && echo yes || echo no');
-            if ($hasJava == "YES") {
+            if (exec('java -version > NUL && echo "YES" || echo "NO"') === "YES") {
                 echo "Running Installer...";
-                echo $hasJava;
                 runInstall();
             } else {
                 echo "NO";
                 echo '<iframe src="javaHelper.html" height="500em" width="100%"></iframe>"';
             }
-            echo "Windows";
-        } else {
+            echo "<br> Running Windows";
+        } elseif ($OS === 'Linux' || 'FreeBSD' || 'Darwin') {
             // if we are running Linux, BSD, or macOS
-            $hasJava = shell_exec('command -v java >/dev/null && echo "YES" || echo "NO"');
-            if ($hasJava == 'YES') {
+            if (exec('command -v java >/dev/null && echo "YES" || echo "NO"') === 'YES') {
                 echo "Running Installer...";
-                echo $hasJava;
                 runInstall();
-            } elseif ($hasJava == 'NO') {
-                echo "NO";
+            } else {
+                // if we do not have java, display the help
                 echo '<iframe src="javaHelper.html" height="500em" width="100%"></iframe>"';
             }
-            echo "Other";
         }
     }
 
@@ -88,8 +121,6 @@
     }
 
 
-    // get title now so we can use it in the next bunch of HTML
-
     echo ('
 
 
@@ -97,7 +128,7 @@
         <div class="container">
             <div class="row">
             ');
-    //dynamic content here
+    // dynamic content here
     echo ('
 
             </div>
