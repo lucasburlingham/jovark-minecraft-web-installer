@@ -1,27 +1,64 @@
 <?php
 
-// Check the status of the installtion from status.conf file which has 1 word in it
+// check to see if the server root is writable
+if (!is_writable('.')) {
+    $error .= 'Can\'t write to the current directory. Please fix this by giving the webserver user write access to the directory.<br/>';
+    echo ($error);
+}
+// check to see if the server root is readable
+if (!is_readable('.')) {
+    $error .= 'Can\'t read the current directory. Please fix this by giving the webserver user write access to the directory.<br/>';
+    echo ($error);
+}
+
+// Check the status of the installation from status.conf file which has 1 word in it
+global $status;
 $status = shell_exec('cat status.conf | head -n 1');
-checkDependants($status);
+echo $status;
+
 
 function checkDependants($status)
 {
-    // Check main java version to see if it is installed, should print out 'version'
-    $javaDependantCheck = shell_exec('java -version | head -n 1 | awk \'{print $2}\'');
-    return $javaDependantStatus = $javaDependantCheck;
-}
+    // Check main java version to see if it is installed, should print out 'YES' if it is installed, and 'NO' if it is not
+    // POSIX:
+    $javaDependantCheck = shell_exec('command -v java >/dev/null && echo "YES" || echo "NO"');
+    if ($javaDependantCheck === "YES") {
+        runInstall($status);
+    }
+    // Windows:
 
 
-if ($status === "ready") {
-    $page_title = "Obsidian Portal Admin | Starting Installer";
-} elseif ($status === "installing") {
-    $page_title = "Obsidian Portal Admin | Installer";
-} elseif ($status === "complete") {
-    $page_title = "Obsidian Portal Admin | Admin Page";
 }
+
+function runInstall($status)
+{
+    if ($status == "installing") {
+        mkdir('server');
+        echo ("Made Server folder...");
+        $url = 'https://launcher.mojang.com/v1/objects/35139deedbd5182953cf1caa23835da59ca3d7cd/server.jar';
+        $file_name = basename($url);
+        if (file_put_contents("server/$file_name", file_get_contents($url))) {
+            echo ("Downloaded server.jar to the current directory");
+        } else {
+            echo ("Downloading server.jar to the current directory failed. Please check the permissions of the index.php file located at " . $_SERVER['PHP_SELF']);
+        }
+    }
+}
+
+function getTitle($status)
+{
+    if ($status === "ready") {
+        $page_title = "Jovark Minecraft Web Installer Details";
+    } elseif ($status === "installing") {
+        $page_title = "Jovark Minecraft Web Installer";
+    } elseif ($status === "complete") {
+        $page_title = "Jovark Minecraft Management";
+    }
+    return $page_title;
+}
+
 
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -35,12 +72,15 @@ if ($status === "ready") {
     <link rel="stylesheet" href="assets/css/style.css">
     <title>
         <?php
-        echo ($page_title);
+        $title = getTitle($status);
         ?>
     </title>
 </head>
 
 <body>
+    <?php
+    echo $page_title;
+    ?>
     <!-- <form action="<?php $_SERVER['PHP_SELF']; ?>">
         <p>
             <label>Initial RAM:</label>
@@ -54,26 +94,26 @@ if ($status === "ready") {
     </form> -->
     <div>
         <div class="container">
-            <?php
+            <div class="row">
+                <?php
+                $dependantStatus = checkDependants($status);
+                echo $dependantStatus;
+                echo ($error);
 
-            if (empty($javaDependantCheck)) {
-                echo ("Something went wrong, and we cannot detect your version of Java.");
-            } elseif ($javaDependantCheck != "version") {
-                echo ("<iframe src=\"javaHelper.html\" width=\"100%\" height=\"500em\" frameBorder=\"0\"></iframe>");
-            }
-
-            if ($status === "installing") {
-                mkdir('server');
-                chdir('server');
-                $url = 'https://launcher.mojang.com/v1/objects/35139deedbd5182953cf1caa23835da59ca3d7cd/server.jar';
-                $file_name = basename($url);
-                if (file_put_contents($file_name, file_get_contents($url))) {
-                    echo "Downloaded server.jar to the current directory";
-                } else {
-                    echo ("Downloading server.jar to the current directory failed. Please check the permissions of the index.php file located at " . $_SERVER['PHP_SELF']);
+                function displayJavaHelp($javaDependantCheck, $status)
+                {
+                    if (empty($javaDependantCheck)) {
+                        echo ("Something went wrong, and we cannot detect your version of Java.");
+                        echo ("<iframe src=\"javaHelper.html\" width=\"100%\" height=\"500em\" frameBorder=\"0\"></iframe>");
+                    } elseif ($javaDependantCheck == "version") {
+                        runInstall($status);
+                    }
                 }
-            }
-            ?>
+
+
+
+                ?>
+            </div>
         </div>
     </div>
 

@@ -1,4 +1,4 @@
-# Jovark MCPanel
+# Jovark Minecraft Web Installer and Management
 
 Manage your Minecraft Java Edition Server Installation like a pro.
 
