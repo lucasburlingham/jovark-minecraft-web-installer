@@ -4,7 +4,7 @@ Manage your Minecraft Java Edition Server Installation like a pro.
 
 ## Features
 
-- Web Installer for Linux and Windows (WIP)
+- Web Installer for Linux and Windows (Working 95%)
 - Start server from the web \*
 - View the console from anywhere \*
 - Run console commands from any web browser with Admin account \*
