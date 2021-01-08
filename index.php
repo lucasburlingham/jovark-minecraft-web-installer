@@ -64,9 +64,6 @@
                                         <a class="page-scroll" href="#about">About</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="page-scroll" href="#why">Why</a>
-                                    </li>
-                                    <li class="nav-item">
                                         <a class="page-scroll" href="#pricing">Pricing</a>
                                     </li>
                                     <li class="nav-item">
@@ -143,7 +140,7 @@
                             <h3>Cross Platform</h3>
                             <p>Install from anywhere*, Manage from anywhere, on your choice of hardware.</p>
                             <br>
-                            <p><small><b>* Not avaliable on servers running Windows without a version of Java pre-installed.</b></small></p>
+                            <p><small><b>* Not available on servers running Windows without a version of Java pre-installed.</b></small></p>
                         </div>
                     </div>
                 </div>
@@ -266,16 +263,16 @@
                                 sed dinonumy eirmod tempor invidunt.</p>
                             <ul class="socials">
                                 <li>
-                                    <a href="jvascript:void(0)"> <i class="lni lni-facebook-original"></i> </a>
+                                    <a href="javascript:void(0)"> <i class="lni lni-facebook-original"></i> </a>
                                 </li>
                                 <li>
-                                    <a href="jvascript:void(0)"> <i class="lni lni-twitter-original"></i> </a>
+                                    <a href="javascript:void(0)"> <i class="lni lni-twitter-original"></i> </a>
                                 </li>
                                 <li>
-                                    <a href="jvascript:void(0)"> <i class="lni lni-instagram-original"></i> </a>
+                                    <a href="javascript:void(0)"> <i class="lni lni-instagram-original"></i> </a>
                                 </li>
                                 <li>
-                                    <a href="jvascript:void(0)"> <i class="lni lni-linkedin-original"></i> </a>
+                                    <a href="javascript:void(0)"> <i class="lni lni-linkedin-original"></i> </a>
                                 </li>
                             </ul>
                         </div>
@@ -309,10 +306,10 @@
                         <div class="footer-widget">
                             <h3>Other Products</h3>
                             <ul class="links">
-                                <li> <a href="jvascript:void(0)">Accounting Software</a> </li>
-                                <li> <a href="jvascript:void(0)">Billing Software</a> </li>
-                                <li> <a href="jvascript:void(0)">Booking System</a> </li>
-                                <li> <a href="jvascript:void(0)">Tracking System</a> </li>
+                                <li> <a href="javascript:void(0)">Accounting Software</a> </li>
+                                <li> <a href="javascript:void(0)">Billing Software</a> </li>
+                                <li> <a href="javascript:void(0)">Booking System</a> </li>
+                                <li> <a href="javascript:void(0)">Tracking System</a> </li>
                             </ul>
                         </div>
                     </div>
@@ -330,95 +327,129 @@
     <script src="assets/js/wow.min.js"></script>
     <script src="assets/js/main.js"></script>
 
-    <?php
-    // check to see if the server root is writable
-    if (!is_writable('.')) {
-        $error .= 'Can\'t write to the current directory. Please fix this by giving the webserver user write access to the directory.<br/>';
-        echo ($error);
-    }
-    // check to see if the server root is readable
-    if (!is_readable('.')) {
-        $error .= 'Can\'t read the current directory. Please fix this by giving the webserver user write access to the directory.<br/>';
-        echo ($error);
-    }
-
-
-
-    // Check the status of the installation from status.conf file which has the current status as the last line of the file
-    $status = shell_exec('cat status.conf | tail -n 1');
-    echo "Status: " . $status . "<br>";
-    checkDependancies();
-
-    function checkDependancies()
-    {
-        if (exec('cat status.conf | tail -n 1') === 'ready') {
-            // show options to configure the install
-        } elseif (exec('cat status.conf | tail -n 1') === 'installing') {
-
-            $OS = PHP_OS;
-            echo "Checking Dependancies";
-            // Check main java version to see if it is installed, should print out 'YES' if it is installed, and 'NO' if it is not
-            if ($OS === 'WINNT') {
-                // if we are running Windows
-                if (exec('java -version > NUL && echo "YES" || echo "NO"') === "YES") {
-                    echo "Running Installer...";
-                    runInstall();
-                } else {
-                    echo "NO";
-                    echo '<iframe src="javaHelper.html" height="500em" width="100%"></iframe>"';
-                }
-                echo "<br> Running Windows";
-            } elseif ($OS === 'Linux' || 'FreeBSD' || 'Darwin') {
-                // if we are running Linux, BSD, or macOS
-                if (exec('command -v java >/dev/null && echo "YES" || echo "NO"') === 'YES') {
-                    echo "Running Installer...";
-                    runInstall();
-                    // change status to done
-                    $text = "done\n";
-                    $statusFIle = file_put_contents('status.conf', $text . PHP_EOL, FILE_APPEND | LOCK_EX);
-                } else {
-                    // if we do not have java, display the help
-                    echo '<iframe src="javaHelper.html" height="500em" width="100%"></iframe>"';
-                }
-            }
-        } elseif (exec('cat status.conf | tail -n 1') === 'done') {
-            // show administrator page when done installing
-        }
-    }
-
-
-    function runInstall()
-    {
-        echo "Running installer actually...";
-        $CD = getcwd();
-        mkdir("$CD/server");
-        chdir("server");
-        echo ("Made Server folder...");
-        $url = 'https://launcher.mojang.com/v1/objects/35139deedbd5182953cf1caa23835da59ca3d7cd/server.jar';
-        $file_name = basename($url);
-        if (file_put_contents($file_name, file_get_contents($url))) {
-            echo ("Downloaded server.jar to the current directory");
-        } else {
-            echo ("Downloading server.jar to the current directory failed. Please check the permissions of the index.php file located at " . $_SERVER['PHP_SELF']);
-        }
-        chdir("../");
-    }
-
-
-    echo ('
-
-
-    <div>
-        <div class="container">
-            <div class="row">
-            ');
-    // dynamic content here
-    ?>
-    </div>
-    </div>
-    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 </body>
 
 </html>
+
+
+
+<?php
+// check to see if the server root is writable
+if (!is_writable('.')) {
+    $error .= 'Can\'t write to the current directory. Please fix this by giving the webserver user write access to the directory.<br/>';
+    echo ($error);
+}
+// check to see if the server root is readable
+if (!is_readable('.')) {
+    $error .= 'Can\'t read the current directory. Please fix this by giving the webserver user write access to the directory.<br/>';
+    echo ($error);
+}
+
+
+
+// Check the status of the installation from status.conf file which has the current status as the last line of the file
+$status = shell_exec('cat status.conf | tail -n 1');
+echo "Status: " . $status . "<br>";
+checkDependancies();
+
+function checkDependancies()
+{
+    if (exec('cat status.conf | tail -n 1') === 'ready') {
+        // show options to configure the install
+    } elseif (exec('cat status.conf | tail -n 1') === 'installing') {
+
+        $OS = PHP_OS;
+        echo "Checking Dependancies";
+        // Check main java version to see if it is installed, should print out 'YES' if it is installed, and 'NO' if it is not
+        if ($OS === 'WINNT') {
+            // if we are running Windows
+            if (exec('java -version > NUL && echo "YES" || echo "NO"') === "YES") {
+                echo "Running Installer...";
+                runInstall();
+            } else {
+                echo "NO";
+                echo '<iframe src="javaHelper.html" height="500em" width="100%"></iframe>"';
+            }
+            echo "<br> Running Windows";
+        } elseif ($OS === 'Linux' || 'FreeBSD' || 'Darwin') {
+            // if we are running Linux, BSD, or macOS
+            if (exec('command -v java >/dev/null && echo "YES" || echo "NO"') === 'YES') {
+                echo "Running Installer...";
+                runInstall();
+                // change status to done
+                $text = "done\n";
+                $statusFIle = file_put_contents('status.conf', $text . PHP_EOL, FILE_APPEND | LOCK_EX);
+            } else {
+                // if we do not have java, display the help
+                echo '<iframe src="javaHelper.html" height="500em" width="100%"></iframe>"';
+            }
+        }
+    } elseif (exec('cat status.conf | tail -n 1') === 'done') {
+        // show administrator page when done installing
+    }
+}
+
+
+function runInstall()
+{
+    $CD = getcwd();
+    $OS = PHP_OS;
+    echo "Running Installer";
+    mkdir("$CD/server");
+    echo ("Creating server folder...");
+    chdir("server");
+
+
+
+    echo ("Downloading Server.jar<br>Please be </i>patient</i>");
+    $url = 'https://launcher.mojang.com/v1/objects/35139deedbd5182953cf1caa23835da59ca3d7cd/server.jar';
+    $file_name = basename($url);
+    if (file_put_contents($file_name, file_get_contents($url))) {
+        echo ("Downloaded $file_name to the current directory");
+    } else {
+        echo ("Downloading $file_name to the current directory failed. Please check the permissions of the index.php file located at " . $_SERVER['PHP_SELF']);
+    }
+
+
+
+    echo ("Downloading goTTY dependency...");
+    if ($OS === 'WINNT') {
+        // Unfortunately, goTTY does not support any version of Windows. We may have to manufacture our own...
+        echo ("This feature is not supported... Skipping.");
+    } elseif ($OS === 'Linux') {
+        // Download binary for Linux
+        $url = "https://github.com/yudai/gotty/releases/download/v1.0.1/gotty_linux_amd64.tar.gz";
+        $file_name = basename($url);
+        if (file_put_contents($file_name, file_get_contents($url))) {
+            echo ("Downloaded $file_name to the current directory");
+        } else {
+            echo ("Downloading $file_name to the current directory failed. Please check the permissions of the index.php file located at " . $_SERVER['PHP_SELF']);
+        }
+    } elseif ($OS === 'BSD') {
+        // Download binary for FreeBSD
+        $url = "https://github.com/yudai/gotty/releases/download/v1.0.1/gotty_freebsd_amd64.tar.gz";
+        $file_name = basename($url);
+        if (file_put_contents($file_name, file_get_contents($url))) {
+            echo ("Downloaded $file_name to the current directory");
+        } else {
+            echo ("Downloading $file_name to the current directory failed. Please check the permissions of the index.php file located at " . $_SERVER['PHP_SELF']);
+        }
+    } elseif ($OS === 'Darwin') {
+        // Download binary for FreeBSD
+        $url = "https://github.com/yudai/gotty/releases/download/v1.0.1/gotty_darwin_amd64.tar.gz";
+        $file_name = basename($url);
+        if (file_put_contents($file_name, file_get_contents($url))) {
+            echo ("Downloaded $file_name to the current directory");
+        } else {
+            echo ("Downloading $file_name to the current directory failed. Please check the permissions of the index.php file located at " . $_SERVER['PHP_SELF']);
+        }
+    }
+
+
+
+    chdir("../");
+}
+
+?>
