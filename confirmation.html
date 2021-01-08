@@ -127,69 +127,69 @@
                             <br>
                             <br>
                             <p>
-                                <select class="required custom-select">
+                                <select class="required custom-select" name="os">
                                     <option selected>Choose from a list:</option>
-                                    <option value="windows64">
+                                    <option value="windows_amd64">
                                         Windows NT x86_64
                                     </option>
-                                    <option value="windows32">
+                                    <option value="windows_386">
                                         Windows NT x86
                                     </option>
                                     <option disabled>
                                         <hr>
                                     </option>
-                                    <option value="linux64">
+                                    <option value="linux_amd64">
                                         Linux x86_64
                                     </option>
-                                    <option value="linux32">
+                                    <option value="linux_386">
                                         Linux x86
                                     </option>
-                                    <option value="linuxarm">
-                                        Linux arm
+                                    <option value="linux_arm">
+                                        Linux
                                     </option>
                                     <option disabled>
                                         <hr>
                                     </option>
-                                    <option value="macos64">
+                                    <option value="macos__amd64">
                                         macOS X x86_64
                                     </option>
-                                    <option value="macos32">
+                                    <option value="macos_386">
                                         macOS X x86
                                     </option>
                                     <option disabled>
                                         <hr>
                                     </option>
-                                    <option value="freebsd64">
+                                    <option value="freebsd_amd64">
                                         FreeBSD x86_64
                                     </option>
-                                    <option value="freebsd32">
+                                    <option value="freebsd_386">
                                         FreeBSD x86
                                     </option>
-                                    <option value="freebsdarm">
+                                    <option value="freebsd_arm">
                                         FreeBSD arm
                                     </option>
                                     <option disabled>
                                         <hr>
                                     </option>
-                                    <option value="openbsd64">
+                                    <option value="openbsd_amd64">
                                         OpenBSD x86_64
                                     </option>
-                                    <option value="openbsd32">
+                                    <option value="openbsd_386">
                                         OpenBSD x86
                                     </option>
-                                    <option value="openbsdarm">
+                                    <option value="openbsd_arm">
                                         OpenBSD arm
                                     </option>
                                     <option disabled>
                                         <hr>
                                     </option>
-                                    <option value="netbsd64">
+                                    <option value="netbsd_amd64">
                                         NetBSD x86_64
                                     </option>
-                                    <option value="netbsd32">
+                                    <option value="netbsd_386">
                                         NetBSD x86
                                     </option>
-                                    <option value="netbsdarm">
+                                    <option value="netbsd_arm">
                                         NetBSD arm
                                     </option>
                                 </select>
@@ -206,12 +206,11 @@
                     <small><i>Needed to start your Minecraft Java Edition Server. <br>This number is in Megabytes
                             (MB).</i></small>
                     <p>
-                        <input type="number" />
+                        <input type="number" name="initram" placeholder="1024" />
                         <br>
                         <br>
-                        <small><i>We recommend 1GB for small servers, 3GB for large ones, <br>
-                                but you will have to have more
-                                than 512MB of RAM to start the server.</i>
+                        <small><i>We recommend 1024MB for small servers, 3096 MB for larger ones, <br>
+                                but you will have to have at least 512MB of RAM to start the server well.</i>
                         </small>
                     </p>
                 </div>
