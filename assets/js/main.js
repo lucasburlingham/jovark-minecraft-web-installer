@@ -1,15 +1,14 @@
+(function () {
+    //===== Prealoder
 
-(function() {
-//===== Prealoder
+    window.onload = function () {
+        window.setTimeout(fadeout, 500);
+    }
 
-	window.onload = function () {
-		window.setTimeout(fadeout, 500);
-	}
-
-	function fadeout() {
-		document.querySelector('.preloader').style.opacity = '0';
-		document.querySelector('.preloader').style.display = 'none';
-	}
+    function fadeout() {
+        document.querySelector('.preloader').style.opacity = '0';
+        document.querySelector('.preloader').style.display = 'none';
+    }
 
 
     /*=====================================
@@ -22,10 +21,10 @@
 
         if (window.pageYOffset > sticky) {
             header_navbar.classList.add("sticky");
-            logo.src = 'assets/img/logo/logo-2.svg';
+            logo.src = 'assets/webp/default.webp';
         } else {
             header_navbar.classList.remove("sticky");
-            logo.src = 'assets/img/logo/logo.svg';
+            logo.src = 'assets/webp/default.webp';
         }
 
 
@@ -44,7 +43,7 @@
 
     // for menu scroll 
     var pageLink = document.querySelectorAll('.page-scroll');
-    
+
     pageLink.forEach(elem => {
         elem.addEventListener('click', e => {
             e.preventDefault();
@@ -57,7 +56,7 @@
 
 
     //===== close navbar-collapse when a  clicked
-    let navbarToggler = document.querySelector(".navbar-toggler");    
+    let navbarToggler = document.querySelector(".navbar-toggler");
     var navbarCollapse = document.querySelector(".navbar-collapse");
 
     document.querySelectorAll(".page-scroll").forEach(e =>
@@ -66,23 +65,23 @@
             navbarCollapse.classList.remove('show')
         })
     );
-    navbarToggler.addEventListener('click', function() {
+    navbarToggler.addEventListener('click', function () {
         navbarToggler.classList.toggle("active");
-    }) 
+    })
 
 
-	// WOW active
+    // WOW active
     new WOW().init();
 
     //======== tiny slider
-	tns({
-		container: '.testimonial-active',
+    tns({
+        container: '.testimonial-active',
         slideBy: 'page',
         mode: 'gallery',
-		autoplay: false,
-		mouseDrag: true,
+        autoplay: false,
+        mouseDrag: true,
         gutter: 0,
-		nav: false,
+        nav: false,
         controls: true,
         controlsText: [
             '<i class="lni lni-chevron-left prev"></i>',
