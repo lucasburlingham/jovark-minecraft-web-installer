@@ -6,10 +6,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $gottyPort = $_POST['gottyport'];
     $OS = $_POST['os'];
     $initRam = $_POST['initram'];
+
+
     if (empty($gottyPort)) {
         echo "Remote Console Connection port is empty! Please go back and fix it before continuing.";
     } else {
-        echo $name;
+        echo ("Configuring for $OS. ");
     }
 }
 
