@@ -45,7 +45,7 @@
                     <div class="col-lg-12">
                         <nav class="navbar navbar-expand-lg">
                             <a class="navbar-brand" href="index.html">
-                                <img src="assets/img/logo/logo.svg" alt="Logo" />
+                                <img src="assets/webp/default.webp" alt="Jovark WIMP Logo" height="75em" width="80em" />
                             </a>
                             <button class="navbar-toggler" type="button" data-toggle="collapse"
                                 data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -221,13 +221,19 @@
                     <i class="lni lni-coffee-cup"></i>
                 </div>
                 <div class="content">
-                    <h3>Cross Platform</h3>
-                    <p>Install from anywhere*, Manage from anywhere, on your choice of hardware.</p>
+                    <h3>Ports to use for Remote Console Connection*</h3>
+                    <p>Recommended: <kbd>8080</kbd></p>
                     <br>
-                    <p><small><b>* Not available on servers running Windows without a version of Java
-                                pre-installed.</b></small></p>
+                    <input type="number" name="gottyport" id="gottyport" placeholder="8080">
+                    <p>
+                        <small><b>Not available on servers running Windows.</b></small>
                 </div>
+                <br>
+                <br>
+                <button type="submit" rel="nofollow" class="main-btn border-btn btn-hover wow fadeInUp"
+                    data-wow-delay=".6s">Submit</button>
             </div>
+
             </form>
         </div>
     </section>
@@ -237,30 +243,6 @@
         <div class="container">
             <div class="widget-wrapper">
                 <div class="row">
-
-                    <div class="col-xl-4 col-lg-4 col-md-6">
-                        <div class="footer-widget">
-                            <div class="logo mb-30">
-                                <a href="index.html"> <img src="assets/img/logo/logo.svg" alt=""> </a>
-                            </div>
-                            <p class="desc mb-30 text-white">Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
-                                sed dinonumy eirmod tempor invidunt.</p>
-                            <ul class="socials">
-                                <li>
-                                    <a href="javascript:void(0)"> <i class="lni lni-facebook-original"></i> </a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0)"> <i class="lni lni-twitter-original"></i> </a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0)"> <i class="lni lni-instagram-original"></i> </a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0)"> <i class="lni lni-linkedin-original"></i> </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
 
                     <div class="col-xl-2 col-lg-2 col-md-6">
                         <div class="footer-widget">
@@ -278,9 +260,9 @@
                         <div class="footer-widget">
                             <h3>Features</h3>
                             <ul class="links">
-                                <li> <a href="javascript:void(0)">How it works</a> </li>
-                                <li> <a href="javascript:void(0)">Privacy policy</a> </li>
-                                <li> <a href="javascript:void(0)">Terms of service</a> </li>
+                                <li> <a href="javascript:void(0)">How it works</a></li>
+                                <li> <a href="javascript:void(0)">Privacy policy</a></li>
+                                <li> <a href="javascript:void(0)">Terms of service</a></li>
                                 <li> <a href="javascript:void(0)">Refund policy</a></li>
                             </ul>
                         </div>
@@ -297,10 +279,8 @@
                             </ul>
                         </div>
                     </div>
-
                 </div>
             </div>
-
         </div>
     </footer>
 
