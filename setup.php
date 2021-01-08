@@ -1,4 +1,16 @@
 <?php
+// get and assign POST values from the confirmation.html page
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // collect value of input field
+    $gottyPort = $_POST['gottyport'];
+    if (empty($gottyPort)) {
+        echo "Remote Console Connection port is empty! Please go back and fix it before continuing.";
+    } else {
+        echo $name;
+    }
+}
+
 // check to see if the server root is writable
 if (!is_writable('.')) {
     $error .= 'Can\'t write to the current directory. Please fix this by giving the webserver user write access to the directory.<br/>';
