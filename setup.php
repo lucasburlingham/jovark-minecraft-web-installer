@@ -4,6 +4,8 @@
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // collect value of input field
     $gottyPort = $_POST['gottyport'];
+    $OS = $_POST['os'];
+    $initRam = $_POST['initram'];
     if (empty($gottyPort)) {
         echo "Remote Console Connection port is empty! Please go back and fix it before continuing.";
     } else {
@@ -27,22 +29,21 @@ if (!is_readable('.')) {
 // Check the status of the installation from status.conf file which has the current status as the last line of the file
 $status = shell_exec('cat status.conf | tail -n 1');
 echo "Status: " . $status . "<br>";
-checkDependancies();
+checkDependancies($OS);
 
-function checkDependancies()
+function checkDependancies($OS)
 {
     if (exec('cat status.conf | tail -n 1') === 'ready') {
         // show options to configure the install
     } elseif (exec('cat status.conf | tail -n 1') === 'installing') {
 
-        $OS = PHP_OS;
         echo "Checking Dependancies";
         // Check main java version to see if it is installed, should print out 'YES' if it is installed, and 'NO' if it is not
         if ($OS === 'WINNT') {
             // if we are running Windows
             if (exec('java -version > NUL && echo "YES" || echo "NO"') === "YES") {
                 echo "Running Installer...";
-                runInstall();
+                runInstall($OS);
             } else {
                 echo "NO";
                 echo '<iframe src="javaHelper.html" height="500em" width="100%"></iframe>"';
@@ -52,7 +53,7 @@ function checkDependancies()
             // if we are running Linux, BSD, or macOS
             if (exec('command -v java >/dev/null && echo "YES" || echo "NO"') === 'YES') {
                 echo "Running Installer...";
-                runInstall();
+                runInstall($OS);
                 // change status to done
                 $text = "done\n";
                 $statusFIle = file_put_contents('status.conf', $text . PHP_EOL, FILE_APPEND | LOCK_EX);
@@ -67,11 +68,10 @@ function checkDependancies()
 }
 
 
-function runInstall()
+function runInstall($OS)
 {
     $CD = getcwd();
-    $OS = PHP_OS;
-    echo "Running Installer";
+    echo ("Running Installer");
     mkdir("$CD/server");
     echo ("Creating server folder...");
     chdir("server");
@@ -90,30 +90,13 @@ function runInstall()
 
 
     echo ("Downloading goTTY dependency...");
+    // Download version of goTTY depending on the version passed from the confirmation.html form.
     if ($OS === 'WINNT') {
         // Unfortunately, goTTY does not support any version of Windows. We may have to manufacture our own...
-        echo ("This feature is not supported... Skipping.");
+        echo ("This feature is not supported on this platform... Skipping.");
     } elseif ($OS === 'Linux') {
-        // Download binary for Linux
-        $url = "https://github.com/yudai/gotty/releases/download/v1.0.1/gotty_linux_amd64.tar.gz";
-        $file_name = basename($url);
-        if (file_put_contents($file_name, file_get_contents($url))) {
-            echo ("Downloaded $file_name to the current directory");
-        } else {
-            echo ("Downloading $file_name to the current directory failed. Please check the permissions of the index.php file located at " . $_SERVER['PHP_SELF']);
-        }
-    } elseif ($OS === 'BSD') {
-        // Download binary for FreeBSD
-        $url = "https://github.com/yudai/gotty/releases/download/v1.0.1/gotty_freebsd_amd64.tar.gz";
-        $file_name = basename($url);
-        if (file_put_contents($file_name, file_get_contents($url))) {
-            echo ("Downloaded $file_name to the current directory");
-        } else {
-            echo ("Downloading $file_name to the current directory failed. Please check the permissions of the index.php file located at " . $_SERVER['PHP_SELF']);
-        }
-    } elseif ($OS === 'Darwin') {
-        // Download binary for FreeBSD
-        $url = "https://github.com/yudai/gotty/releases/download/v1.0.1/gotty_darwin_amd64.tar.gz";
+        // Download binary for system represented by $OS
+        $url = "https://github.com/yudai/gotty/releases/download/v1.0.1/gotty_$OS.tar.gz";
         $file_name = basename($url);
         if (file_put_contents($file_name, file_get_contents($url))) {
             echo ("Downloaded $file_name to the current directory");
@@ -121,6 +104,12 @@ function runInstall()
             echo ("Downloading $file_name to the current directory failed. Please check the permissions of the index.php file located at " . $_SERVER['PHP_SELF']);
         }
     }
+
+    if (!empty($url)) {
+        mkdir('gotty');
+        exec("tar -C gotty/ -zxvf $file_name");
+    }
+
 
 
 
