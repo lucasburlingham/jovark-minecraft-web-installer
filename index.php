@@ -9,8 +9,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.webp" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-    <link rel="stylesheet" href="assets/css/animate.css" />
-    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="/assets/css/animate.css" />
+    <link rel="stylesheet" href="/assets/css/main.css" />
+    <link rel="stylesheet" href="/assets/css/main.css" />
+    <link rel="stylesheet" href="/assets/css/LineIcons.2.0.css">
+
     <title>
         Jovark Minecraft Web Installer
     </title>
@@ -60,7 +63,6 @@
                                     <li class="nav-item">
                                         <a class="page-scroll" href="#about">About</a>
                                     </li>
-
                                     <li class="nav-item">
                                         <a class="page-scroll" href="#why">Why</a>
                                     </li>
@@ -72,16 +74,11 @@
                                     </li>
                                 </ul>
                             </div>
-                            <!-- navbar collapse -->
                         </nav>
-                        <!-- navbar -->
                     </div>
                 </div>
-                <!-- row -->
             </div>
-            <!-- container -->
         </div>
-        <!-- navbar area -->
     </header>
 
     <section id="home" class="hero-section">
@@ -89,12 +86,17 @@
             <div class="row align-items-center position-relative">
                 <div class="col-lg-6">
                     <div class="hero-content">
-                        <h1 class="wow fadeInUp" data-wow-delay=".4s">Your using free lite version</h1>
+                        <h1 class="wow fadeInUp" data-wow-delay=".4s">Jovark Minecraft Web Installer</h1>
                         <p class="wow fadeInUp" data-wow-delay=".6s">
-                            Please, purchase full version to get all sections, features and permission to remove footer
-                            credit.
+                            The easiest way to install a Minecraft Java Edition Server with Advanced and Remote Management Features
                         </p>
-                        <a href="https://rebrand.ly/ud-saaspal" rel="nofollow" class="main-btn border-btn btn-hover wow fadeInUp" data-wow-delay=".6s">Purchase Now</a>
+                        <p> <?php
+                            $status = shell_exec('cat status.conf | tail -n 1');
+                            echo "Status: " . $status . "<br>";
+                            ?>
+                        </p>
+                        <a href="https://rebrand.ly/ud-saaspal" rel="nofollow" class="main-btn border-btn btn-hover wow fadeInUp" data-wow-delay=".6s">Start the Process</a>
+
                         <a href="#features" class="scroll-bottom"> <i class="lni lni-arrow-down"></i></a>
                     </div>
                 </div>
@@ -116,9 +118,8 @@
                             <i class="lni lni-bootstrap"></i>
                         </div>
                         <div class="content">
-                            <h3>Bootstrap 5</h3>
-                            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
-                                invidunt ut labore</p>
+                            <h3>Quick Install</h3>
+                            <p>Install from a modern web interface with comfort and ease.</p>
                         </div>
                     </div>
                 </div>
@@ -128,9 +129,8 @@
                             <i class="lni lni-layout"></i>
                         </div>
                         <div class="content">
-                            <h3>Clean Design</h3>
-                            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
-                                invidunt ut labore</p>
+                            <h3>Intuitive Admin Interface</h3>
+                            <p>Our goal is to make your life a breeze.</p>
                         </div>
                     </div>
                 </div>
@@ -140,9 +140,10 @@
                             <i class="lni lni-coffee-cup"></i>
                         </div>
                         <div class="content">
-                            <h3>Easy to Use</h3>
-                            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
-                                invidunt ut labore</p>
+                            <h3>Cross Platform</h3>
+                            <p>Install from anywhere*, Manage from anywhere, on your choice of hardware.</p>
+                            <br>
+                            <p><small><b>* Not avaliable on servers running Windows without a version of Java pre-installed.</b></small></p>
                         </div>
                     </div>
                 </div>
@@ -163,14 +164,11 @@
                 <div class="col-xl-6 col-lg-6">
                     <div class="about-content">
                         <div class="section-title mb-30">
-                            <h1 class="mb-25 wow fadeInUp" data-wow-delay=".2s">Perfect Solution Thriving Online
-                                Business</h1>
-                            <p class="wow fadeInUp" data-wow-delay=".4s">Lorem ipsum dolor sit amet, consetetur
-                                sadipscing elitr, sed dinonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-                                erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
-                                clita kasd gubergren, no sea takimata sanctus est Lorem.Lorem ipsum dolor sit amet.</p>
+                            <h1 class="mb-25 wow fadeInUp" data-wow-delay=".2s">Perfect For Any Minecraft Server Administrator</h1>
+                            <p class="wow fadeInUp" data-wow-delay=".4s">Don't mess around with unstable one-click installs.
+                                Manage and have full control of <i>Your Very Own</i>
+                                Minecraft Java Edition Server with Jovark Minecraft Web Installer and Admin Interface</p>
                         </div>
-                        <a href="javascript:void(0)" class="main-btn btn-hover border-btn wow fadeInUp" data-wow-delay=".6s">Discover More</a>
                     </div>
                 </div>
             </div>
@@ -183,18 +181,15 @@
                 <div class="col-xl-6 col-lg-6">
                     <div class="about-content">
                         <div class="section-title mb-30">
-                            <h1 class="mb-25 wow fadeInUp" data-wow-delay=".2s">Easy to Use with Tons of Awesome
-                                Features</h1>
-                            <p class="wow fadeInUp" data-wow-delay=".4s">Lorem ipsum dolor sit amet, consetetur
-                                sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna
-                                aliquyam erat, sed diam voluptua.</p>
+                            <h1 class="mb-25 wow fadeInUp" data-wow-delay=".2s">Remotely Manage and Administer with Advanced Features</h1>
+                            <p class="wow fadeInUp" data-wow-delay=".4s">Don't wait until you can sit down for a nice cup of tea to manage your server. Do it remotely, from anywhere!</p>
                         </div>
                         <ul>
-                            <li>Quick Access</li>
-                            <li>Easily to Manage</li>
-                            <li>24/7 Support</li>
+                            <li>Online Console Client *</li>
+                            <li>Remote Server Startup/Shutdown *</li>
+                            <li>User accounts for Managers and Mods *</li>
                         </ul>
-                        <a href="javascript:void(0)" class="main-btn btn-hover border-btn wow fadeInUp" data-wow-delay=".6s">Learn More</a>
+                        <small><i><b>* Not yet developed</b></i></small>
                     </div>
                 </div>
                 <div class="col-xl-6 col-lg-6 order-first order-lg-last">
@@ -208,108 +203,22 @@
         </div>
     </section>
 
-    <section id="why" class="feature-extended-section pt-100">
-        <div class="feature-extended-wrapper">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-xxl-5 col-xl-6 col-lg-8 col-md-9">
-                        <div class="section-title text-center mb-60">
-                            <h1 class="mb-25 wow fadeInUp" data-wow-delay=".2s">Why Choose SaaSpal</h1>
-                            <p class="wow fadeInUp" data-wow-delay=".4s">Lorem ipsum dolor sit amet, consetetur
-                                sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-lg-4 col-md-6">
-                        <div class="single-feature-extended">
-                            <div class="icon">
-                                <i class="lni lni-display"></i>
-                            </div>
-                            <div class="content">
-                                <h3>SaaS Focused</h3>
-                                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
-                                    tempor invidunt ut labore</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="single-feature-extended">
-                            <div class="icon">
-                                <i class="lni lni-leaf"></i>
-                            </div>
-                            <div class="content">
-                                <h3>Awesome Design</h3>
-                                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
-                                    tempor invidunt ut labore</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="single-feature-extended">
-                            <div class="icon">
-                                <i class="lni lni-grid-alt"></i>
-                            </div>
-                            <div class="content">
-                                <h3>Ready to Use</h3>
-                                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
-                                    tempor invidunt ut labore</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="single-feature-extended">
-                            <div class="icon">
-                                <i class="lni lni-javascript"></i>
-                            </div>
-                            <div class="content">
-                                <h3>Vanilla JS</h3>
-                                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
-                                    tempor invidunt ut labore</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="single-feature-extended">
-                            <div class="icon">
-                                <i class="lni lni-layers"></i>
-                            </div>
-                            <div class="content">
-                                <h3>Essential Sections</h3>
-                                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
-                                    tempor invidunt ut labore</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="single-feature-extended">
-                            <div class="icon">
-                                <i class="lni lni-rocket"></i>
-                            </div>
-                            <div class="content">
-                                <h3>Highly Optimized</h3>
-                                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
-                                    tempor invidunt ut labore</p>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </section>
 
     <section id="pricing" class="pricing-section">
+        <div class="container">
+            <div class="section-title text-center pt-90">
+
+            </div>
+        </div>
     </section>
 
     <section id="testimonials" class="testimonial-section pt-90">
         <div class="container">
             <div class="section-title text-center">
-                <h1 class="mb-30">You are using free lite version</h1>
-                <p>Please, purchase full version to get all sections, features and permission to remove footer credits
+                <h1 class="mb-30">Pricing</h1>
+                <p>FREE! The best price for the best customers. Contact Sales for Official Support pricing.
                 </p></br>
-                <a href="https://rebrand.ly/ud-saasland/" class="main-btn border-btn btn-hover wow fadeInUp" rel="nofollow">Purchase Now</a>
+                <a href="https://rebrand.ly/ud-saasland/" class="main-btn border-btn btn-hover wow fadeInUp" rel="nofollow">Contact Sales</a>
             </div>
         </div>
     </section>
@@ -336,6 +245,13 @@
         </div>
     </section>
 
+    <h1>Example: </h1>
+    <div id="terminal"></div>
+    <script>
+        var term = new Terminal();
+        term.open(document.getElementById('terminal'));
+        term.write('Hello from \x1B[1;3;31mxterm.js\x1B[0m $ ')
+    </script>
     <footer class="footer">
         <div class="container">
             <div class="widget-wrapper">
@@ -428,38 +344,45 @@
 
 
 
-
-
-    // Check the status of the installation from status.conf file which has 1 word in it
-    $status = shell_exec('cat status.conf | head -n 1');
+    // Check the status of the installation from status.conf file which has the current status as the last line of the file
+    $status = shell_exec('cat status.conf | tail -n 1');
     echo "Status: " . $status . "<br>";
     checkDependancies();
 
-
     function checkDependancies()
     {
-        $OS = PHP_OS;
-        echo "Checking Dependancies";
-        // Check main java version to see if it is installed, should print out 'YES' if it is installed, and 'NO' if it is not
-        if ($OS === 'WINNT') {
-            // if we are running Windows
-            if (exec('java -version > NUL && echo "YES" || echo "NO"') === "YES") {
-                echo "Running Installer...";
-                runInstall();
-            } else {
-                echo "NO";
-                echo '<iframe src="javaHelper.html" height="500em" width="100%"></iframe>"';
+        if (exec('cat status.conf | tail -n 1') === 'ready') {
+            // show options to configure the install
+        } elseif (exec('cat status.conf | tail -n 1') === 'installing') {
+
+            $OS = PHP_OS;
+            echo "Checking Dependancies";
+            // Check main java version to see if it is installed, should print out 'YES' if it is installed, and 'NO' if it is not
+            if ($OS === 'WINNT') {
+                // if we are running Windows
+                if (exec('java -version > NUL && echo "YES" || echo "NO"') === "YES") {
+                    echo "Running Installer...";
+                    runInstall();
+                } else {
+                    echo "NO";
+                    echo '<iframe src="javaHelper.html" height="500em" width="100%"></iframe>"';
+                }
+                echo "<br> Running Windows";
+            } elseif ($OS === 'Linux' || 'FreeBSD' || 'Darwin') {
+                // if we are running Linux, BSD, or macOS
+                if (exec('command -v java >/dev/null && echo "YES" || echo "NO"') === 'YES') {
+                    echo "Running Installer...";
+                    runInstall();
+                    // change status to done
+                    $text = "done\n";
+                    $statusFIle = file_put_contents('status.conf', $text . PHP_EOL, FILE_APPEND | LOCK_EX);
+                } else {
+                    // if we do not have java, display the help
+                    echo '<iframe src="javaHelper.html" height="500em" width="100%"></iframe>"';
+                }
             }
-            echo "<br> Running Windows";
-        } elseif ($OS === 'Linux' || 'FreeBSD' || 'Darwin') {
-            // if we are running Linux, BSD, or macOS
-            if (exec('command -v java >/dev/null && echo "YES" || echo "NO"') === 'YES') {
-                echo "Running Installer...";
-                runInstall();
-            } else {
-                // if we do not have java, display the help
-                echo '<iframe src="javaHelper.html" height="500em" width="100%"></iframe>"';
-            }
+        } elseif (exec('cat status.conf | tail -n 1') === 'done') {
+            // show administrator page when done installing
         }
     }
 
@@ -490,15 +413,12 @@
             <div class="row">
             ');
     // dynamic content here
-    echo ('
-
-            </div>
-        </div>
+    ?>
+    </div>
+    </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 </body>
 
 </html>
-
-');
