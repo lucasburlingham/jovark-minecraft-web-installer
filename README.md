@@ -26,4 +26,4 @@ Manage your Minecraft Java Edition Server Installation like a pro.
    - Remote management interface
      - Admin users with MySQL backend
 
-#### Devs wanted! This project is mostly written in PHP, with `shell_exec()` running a lot of the backend processes.
+#### Devs wanted! This project is mostly written in PHP, with `exec()` running a lot of the backend processes.
