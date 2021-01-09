@@ -31,9 +31,9 @@ if (!is_readable('.')) {
 // Check the status of the installation from status.conf file which has the current status as the last line of the file
 $status = shell_exec('cat status.conf | tail -n 1');
 echo "Status: " . $status . "<br>";
-checkDependancies($OS, $initRam);
+checkDependancies($OS, $initRam, $gottyPort);
 
-function checkDependancies($OS, $initRam)
+function checkDependancies($OS, $initRam, $gottyPort)
 {
     if (exec('cat status.conf | tail -n 1') === 'ready') {
         // show options to configure the install
@@ -47,6 +47,7 @@ function checkDependancies($OS, $initRam)
             if (exec('java -version > NUL && echo "YES" || echo "NO"') === "YES") {
                 echo "Running Installer...";
                 runInstall($OS);
+                runServer($initRam, $gottyPort);
             } else {
                 echo "NO";
                 echo '<iframe src="javaHelper.html" height="500em" width="100%"></iframe>"';
@@ -57,7 +58,7 @@ function checkDependancies($OS, $initRam)
             if (exec('command -v java >/dev/null && echo "YES" || echo "NO"') === 'YES') {
                 echo "Running Installer...";
                 runInstall($OS);
-                runServer($initRam);
+                runServer($initRam, $gottyPort);
                 // change status to done
                 $text = "done\n";
                 $statusFIle = file_put_contents('status.conf', $text . PHP_EOL, FILE_APPEND | LOCK_EX);
@@ -108,7 +109,9 @@ function runInstall($OS)
 
     if (!empty($url)) {
         mkdir('gotty');
-        exec("tar -C gotty/ -zxvf $file_name");
+        exec("tar xf $file_name -C server/");
+    } else {
+        echo ("Done with Install. Starting goTTY at <a href=\"http://localhost:$gottyPort/\"><kbd>http://localhost:$gottyPort/</kbd></a>.");
     }
 
 
@@ -118,9 +121,10 @@ function runInstall($OS)
 }
 
 
-function runServer($initRam)
+function runServer($initRam, $gottyPort)
 {
     echo ("<br>Running Server...");
-    exec("server/gotty java -Xmx" . $initRam . "M -Xms" . $initRam . "M -jar server.jar --nogui &");
-    echo ("<br>Done");
+    exec("server/gotty java -Xmx" . $initRam . "M -Xms" . $initRam . "M -jar server/server.jar --nogui");
+    echo ("<br>Done! Displaying <b>Remote Console Connection</b> below:");
+    echo ('<br><br><iframe="http://localhost:' . $gottyPort . '/" frameborder="0"></iframe>');
 }
