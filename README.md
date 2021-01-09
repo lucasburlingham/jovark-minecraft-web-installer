@@ -1,6 +1,6 @@
 # Jovark Minecraft Web Installer and Management
 
-![Jovark WIMP Logo](https://github.com/lucasburlingham/jovark-wimp/blob/main/default.png?raw=true)
+![Jovark WIMP Logo](https://github.com/lucasburlingham/jovark-wimp/blob/main/cover.png?raw=true)
 <hr>
 
 Manage your Minecraft Java Edition Server Installation like a pro.
