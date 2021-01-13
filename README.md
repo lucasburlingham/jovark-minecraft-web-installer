@@ -1,9 +1,9 @@
-# Jovark Minecraft Web Installer and Management
+# Jovark Web Installer and Management Panel
 
 ![Jovark WIMP Logo](https://github.com/lucasburlingham/jovark-wimp/blob/main/cover.png?raw=true)
 <hr>
 
-Manage your Minecraft Java Edition Server Installation like a pro.
+Manage your Minecraft Java Edition and Minetest Server like a pro.
 
 ## Features
 
@@ -16,18 +16,19 @@ Manage your Minecraft Java Edition Server Installation like a pro.
 
 ## Roadmap
 
-1. Jovark Minecraft Java Edition Web Installer
+1. Jovark Minecraft Java Edition Web Installer 
+   - Web Installer ✔ (Minecraft)
+   - Basic server management 
+   - Remote management interface ✔ (Minecraft)
+     - Admin users with MySQL backend
+     - Remote Console viewing ✔
+     - Remote Console commands ✔
+2. Jovark Minetest Web Installer 
    - Web Installer
    - Basic server management
    - Remote management interface
      - Admin users with MySQL backend
-     - Remote Console viewing
-     - Remote Console commands
-2. Jovark Minetest Web Installer
-   - Web Installer
-   - Basic server management
-   - Remote management interface
-     - Admin users with MySQL backend
+     - Remote Console commands 
 
 #### Devs wanted! This project is mostly written in PHP, with `exec()` running a lot of the backend processes.
 
