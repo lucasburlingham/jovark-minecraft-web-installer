@@ -1,0 +1,6 @@
+.text-sideways {
+  writing-mode: vertical-lr;
+  direction: ltr;
+  font-weight: bolder;
+  font-size: xx-large;
+}
