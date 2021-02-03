@@ -35,8 +35,9 @@ require('db.php');
                         <?php
                         $username = $_SESSION['username'];
                         $query = "SELECT realname from `users` WHERE username='$username'";
-                        $realname = mysqli_query($con, $query) or die(mysqli_error($con));
-                        echo $username;
+                        $result = mysqli_query($con, $query) or die(mysqli_error($con));
+                        $row = mysqli_fetch_assoc($result);
+                        echo $row['realname'];
                         ?>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -50,8 +51,6 @@ require('db.php');
         </div>
     </nav>
     <?php
-
-    print_r($_SESSION);
     ?>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>

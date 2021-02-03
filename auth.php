@@ -1,6 +1,7 @@
 <?php
 session_start();
-if (!isset($_SESSION["username"])) {
-    header("Location: login.php");
+$username = $_SESSION["username"];
+if (!isset($username)) {
+    echo "<script>window.location.href='index.php'</script>";
     exit();
 }
