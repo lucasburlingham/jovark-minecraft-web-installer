@@ -52,9 +52,28 @@ require('db.php');
             </div>
         </div>
     </nav>
-    <?php
-    ?>
 
+    <div class="jumbotron jumbotron-fluid bg-secondary text-light">
+        <h1 class="display-3">Setup</h1>
+        <p class="lead">Checking Status...</p>
+        <hr class="my-2">
+
+        <?php $query = "SELECT `mc_status` from `status`";
+        $result = mysqli_query($con, $query) or
+            die(mysqli_error($con));
+        $row = mysqli_fetch_assoc($result);
+        if ($row === 'installed') {
+        ?>
+        <?php } else {
+        ?>
+        <p>Lets Start!</p>
+        <p class="lead">
+            <a class="btn btn-primary btn-lg" href="setup.php" role="button">Start Setup</a>
+        </p>
+        <?php } ?>
+
+
+    </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
