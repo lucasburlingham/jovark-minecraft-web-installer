@@ -141,3 +141,12 @@ navbar > li {
   width: 70%;
   background-color: white;
 }
+
+small {
+  font-style: italic;
+}
+
+form.centered {
+  justify-content: center;
+  text-align: center;
+}
