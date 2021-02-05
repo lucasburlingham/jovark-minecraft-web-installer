@@ -2,7 +2,8 @@
 
 ### Setup and Configuration
 
-1. Change your database Username and Password in the `db.php` file. 
+1. Change your database Username and Password in the `db.php` file.
+
    - We recommend a password at least 12 characters long with spaces and special characters.
 
 2. Create Database Using the following Query:
@@ -18,5 +19,9 @@ CREATE TABLE IF NOT EXISTS register.`users` (
  `trn_date` datetime NOT NULL,
  PRIMARY KEY (`id`)
  );
-```
 
+ CREATE TABLE IF NOT EXISTS register.`status` (
+    `mc_status` varchar(20) NOT NULL,
+    `mt_status` varchar(20) NOT NULL
+ );
+```
