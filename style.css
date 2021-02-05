@@ -132,3 +132,12 @@ img {
 navbar > li {
   list-style: none;
 }
+
+.jumbotron > * {
+  padding-left: 10%;
+}
+
+.jumbotron > hr {
+  width: 70%;
+  background-color: white;
+}
