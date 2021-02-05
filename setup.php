@@ -8,7 +8,7 @@ require('db.php');
 
 <head>
     <meta charset="utf-8">
-    <title>Profile</title>
+    <title>Setup</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
         integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
@@ -25,11 +25,14 @@ require('db.php');
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a class="nav-item nav-link active" href="#">User Profile</a>
-                <a class="nav-item nav-link" href="index.php ">Home</a>
+                <a class="nav-item nav-link active" href="#">Setup</a>
+                <a class="nav-item nav-link" href="#">Features</a>
+                <a class="nav-item nav-link" href="#">Pricing</a>
+                <a class="nav-item nav-link" href="#">Disabled</a>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-rimary float-right" href="#" id="navbarDropdown"
-                        role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle text-success float-right" style="float:right;" href="#"
+                        id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
                         <?php
                         $username = $_SESSION['username'];
                         $query = "SELECT realname from `users` WHERE username='$username'";
@@ -49,9 +52,16 @@ require('db.php');
             </div>
         </div>
     </nav>
-    <?php
-    ?>
 
+    <div class="jumbotron jumbotron-fluid bg-secondary text-light">
+        <h1 class="display-3">We hear that you want to start.</h1>
+        <p class="lead">Fill out the form below to get on your way.</p>
+        <hr class="my-2">
+        <p>More info</p>
+        <p class="lead">
+            <a class="btn btn-primary btn-lg" href="Jumbo action link" role="button">Jumbo action name</a>
+        </p>
+    </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>

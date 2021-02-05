@@ -10,7 +10,8 @@ require('db.php');
     <meta charset="utf-8">
     <title>Welcome Home</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 </head>
 
 <body>
@@ -18,7 +19,8 @@ require('db.php');
         <a class="navbar-brand" href="#">
             Jovark Services Admin Panel
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
@@ -28,7 +30,9 @@ require('db.php');
                 <a class="nav-item nav-link" href="#">Pricing</a>
                 <a class="nav-item nav-link" href="#">Disabled</a>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-success mr-auto mt-2 mt-lg-0" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle text-success float-right" style="float:right;" href="#"
+                        id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
                         <?php
                         $username = $_SESSION['username'];
                         $query = "SELECT realname from `users` WHERE username='$username'";
@@ -37,6 +41,7 @@ require('db.php');
                         echo $row['realname'];
                         ?>
                     </a>
+
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="profile.php">Profile</a>
                         <a class="dropdown-item" href="#">Preferences</a>
@@ -47,9 +52,28 @@ require('db.php');
             </div>
         </div>
     </nav>
-    <?php
-    ?>
 
+    <div class="jumbotron jumbotron-fluid bg-secondary text-light">
+        <h1 class="display-3">Setup</h1>
+        <p class="lead">Checking Status...</p>
+        <hr class="my-2">
+
+        <?php $query = "SELECT `mc_status` from `status`";
+        $result = mysqli_query($con, $query) or
+            die(mysqli_error($con));
+        $row = mysqli_fetch_assoc($result);
+        if ($row === 'installed') {
+        ?>
+        <?php } else {
+        ?>
+        <p>Lets Start!</p>
+        <p class="lead">
+            <a class="btn btn-primary btn-lg" href="setup.php" role="button">Start Setup</a>
+        </p>
+        <?php } ?>
+
+
+    </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>

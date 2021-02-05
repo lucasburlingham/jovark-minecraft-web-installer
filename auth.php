@@ -2,6 +2,6 @@
 session_start();
 $username = $_SESSION["username"];
 if (!isset($username)) {
-    echo "<script>window.location.href='index.php'</script>";
+    print_r("<script>window.location.href='index.php'</script>");
     exit();
 }
