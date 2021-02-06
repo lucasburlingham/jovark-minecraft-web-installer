@@ -121,7 +121,8 @@ img {
 }
 
 .float-right {
-  float: right !important;
+  float: inline-end !important;
+  padding-left: 100%;
 }
 
 .dropdown-menu-right {
@@ -157,7 +158,6 @@ form.centered {
   flex: auto;
 }
 
-dark {
-  background-color: #373840;
-  column-rule: #c2cbe5;
+.padding-5 {
+  padding-right: 5%;
 }
