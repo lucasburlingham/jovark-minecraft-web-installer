@@ -9,29 +9,36 @@ require('db.php');
     <meta charset="utf-8">
     <title>Welcome Home</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-</head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-darkmode@0.7.0/dist/darktheme.css" />
+    <script src="https://unpkg.com/bootstrap-darkmode@0.7.0/dist/theme.js"></script>
+
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">
-            Jovark Services Admin Panel
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
-            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <nav class="navbar navbar-expand-lg">
+        <a class="navbar-brand" href="#">Jovark Services Management Panel</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-                <a class="nav-item nav-link active" href="#">Home</a>
-                <a class="nav-item nav-link" href="#">Features</a>
-                <a class="nav-item nav-link" href="#">Pricing</a>
-                <a class="nav-item nav-link" href="#">Disabled</a>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-success float-right" style="float:right;" href="#"
-                        id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-                        aria-expanded="false">
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="">Features</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#">Disabled</a>
+                </li>
+            </ul>
+            <div class="form-inline my-2 my-lg-0">
+                <div class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-success" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <?php
                         $username = $_SESSION['username'];
                         $query = "SELECT realname from `users` WHERE username='$username'";
@@ -40,19 +47,41 @@ require('db.php');
                         echo $row['realname'];
                         ?>
                     </a>
-
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <h6 class="dropdown-header">Account</h6>
                         <a class="dropdown-item" href="profile.php">Profile</a>
-                        <a class="dropdown-item" href="prefs.php">Preferences</a>
+                        <?php
+                        $username = $_SESSION['username'];
+                        $query = "SELECT theme from `users` WHERE username='$username'";
+                        $result = mysqli_query($con, $query) or die(mysqli_error($con));
+                        $row = mysqli_fetch_assoc($result);
+                        $theme = $row['theme'];
+                        if ($theme == "light") {
+                            echo ('<a class="dropdown-item" href="prefs.php">Preferences</a>');
+                        } else {
+                        ?>
+                        <a class="dropdown-item">
+                            <script>
+                            const themeConfig = new ThemeConfig();
+                            const darkSwitch = writeDarkSwitch(themeConfig);
+                            themeConfig.initTheme();
+                            </script>
+                        </a>
+                        </head>
+                        <?php } ?>
+
+
+
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="logout.php">Logout</a>
+                        <a class="dropdown-item text-danger" href="logout.php">Logout</a>
                     </div>
-                </li>
+                </div>
             </div>
         </div>
     </nav>
 
-    <div class="jumbotron jumbotron-fluid bg-secondary text-light">
+
+    <div class="jumbotron jumbotron-fluid">
         <h1 class="display-3">Setup</h1>
         <p class="lead">Checking Status...</p>
         <hr class="my-2">

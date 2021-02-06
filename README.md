@@ -17,6 +17,8 @@ CREATE TABLE IF NOT EXISTS register.`users` (
  `email` varchar(50) NOT NULL,
  `password` varchar(50) NOT NULL,
  `trn_date` datetime NOT NULL,
+ `realname` varchar(50) NOT NULL,
+ `theme` varchar(10) NOT NULL,
  PRIMARY KEY (`id`)
  );
 
