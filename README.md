@@ -25,3 +25,21 @@ CREATE TABLE IF NOT EXISTS register.`users` (
     `mt_status` varchar(20) NOT NULL
  );
 ```
+
+Manage your Minecraft Java Edition Server Installation like a pro. Manage your Minecraft Java Edition and Minetest Server like a pro.
+
+## Features
+
+Manage your Minecraft Java Edition Server Installation like a pro.
+
+## Roadmap
+
+1. Jovark Minecraft Java Edition Web Installer
+   - Web Installer (Minecraft)
+   - Basic server management
+   - Remote management interface
+     - Admin users with MySQL backend
+     - Remote Console viewing
+     - Remote Console commands
+
+#### Devs wanted! This project is mostly written in PHP, with `exec()` running a lot of the backend processes.
