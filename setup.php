@@ -15,22 +15,22 @@ require('db.php');
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">
+    <nav class="dark navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="dark navbar-brand" href="index.php">
             Jovark Services Admin Panel
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+        <button class="dark navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
             aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+            <span class="dark navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-                <a class="nav-item nav-link active" href="#">Setup</a>
-                <a class="nav-item nav-link" href="#">Features</a>
-                <a class="nav-item nav-link" href="#">Pricing</a>
-                <a class="nav-item nav-link" href="#">Disabled</a>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-success float-right" style="float:right;" href="#"
+        <div class="dark collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="dark navbar-nav">
+                <a class="dark nav-item nav-link active" href="#">Setup</a>
+                <a class="dark nav-item nav-link" href="#">Features</a>
+                <a class="dark nav-item nav-link" href="#">Pricing</a>
+                <a class="dark nav-item nav-link" href="#">Disabled</a>
+                <li class="dark nav-item dropdown">
+                    <a class="dark nav-link dropdown-toggle text-success float-right" style="float:right;" href="#"
                         id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false">
                         <?php
@@ -42,25 +42,20 @@ require('db.php');
                         ?>
                     </a>
 
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="profile.php">Profile</a>
-                        <a class="dropdown-item" href="#">Preferences</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="logout.php">Logout</a>
+                    <div class="dark dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dark dropdown-item" href="profile.php">Profile</a>
+                        <a class="dark dropdown-item" href="#">Preferences</a>
+                        <div class="dark dropdown-divider"></div>
+                        <a class="dark dropdown-item" href="logout.php">Logout</a>
                     </div>
                 </li>
             </div>
         </div>
     </nav>
 
-    <div class="jumbotron jumbotron-fluid bg-secondary text-light">
-        <h1 class="display-3">We hear that you want to start.</h1>
-        <p class="lead">Fill out the form below to get on your way.</p>
-        <hr class="my-2">
-        <p>More info</p>
-        <p class="lead">
-            <a class="btn btn-primary btn-lg" href="Jumbo action link" role="button">Jumbo action name</a>
-        </p>
+    <div class="dark jumbotron jumbotron-fluid bg-secondary text-light">
+        <h1 class="dark display-3">We hear that you want to start.</h1>
+        <p class="dark lead">Fill out the form below to get on your way.</p>
     </div>
 
     <!-- Insert form from test.html -->

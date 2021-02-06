@@ -150,3 +150,14 @@ form.centered {
   justify-content: center;
   text-align: center;
 }
+
+.centered {
+  justify-content: center;
+  text-align: center;
+  flex: auto;
+}
+
+dark {
+  background-color: #373840;
+  column-rule: #c2cbe5;
+}
