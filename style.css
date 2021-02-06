@@ -117,7 +117,8 @@ img {
 }
 
 .active {
-  font-weight: bolder;
+  font-weight: bolder !important;
+  color: black !important;
 }
 
 .float-right {
