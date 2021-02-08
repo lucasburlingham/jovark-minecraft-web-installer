@@ -117,11 +117,13 @@ img {
 }
 
 .active {
-  font-weight: bolder;
+  font-weight: bolder !important;
+  color: black !important;
 }
 
 .float-right {
-  float: right !important;
+  float: inline-end !important;
+  padding-left: 100%;
 }
 
 .dropdown-menu-right {
@@ -140,4 +142,23 @@ navbar > li {
 .jumbotron > hr {
   width: 70%;
   background-color: white;
+}
+
+small {
+  font-style: italic;
+}
+
+form.centered {
+  justify-content: center;
+  text-align: center;
+}
+
+.centered {
+  justify-content: center;
+  text-align: center;
+  flex: auto;
+}
+
+.padding-5 {
+  padding-right: 5%;
 }

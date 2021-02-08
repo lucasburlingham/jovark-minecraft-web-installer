@@ -16,7 +16,7 @@ include("auth.php");
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="index.php">
             Jovark Services Admin Panel
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
@@ -32,11 +32,10 @@ include("auth.php");
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <?php echo $_SESSION['user'];
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="#">Profile</a>
-                        <a class="dropdown-item" href="#">Prefrences</a>
+                        <a class="dropdown-item" href="prefs.php">Preferences</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#">Logout</a>
                     </div>
@@ -45,6 +44,24 @@ include("auth.php");
         </div>
     </nav>
 
+    <form action="" class="centered">
+        <section>
+            <h5>Select At least One (1):</h5>
+            <p> <small>These will be installed to your webserver's root directory.</small></p>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="minecraft" id="java-edition">
+                <label class="form-check-label" for="java-edition">
+                    Install Minecraft Java Edition Server
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="minetest" id="minetest">
+                <label class="form-check-label" for="minetest">
+                    Install Minetest Server
+                </label>
+            </div>
+        </section>
+    </form>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
